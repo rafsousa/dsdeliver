@@ -11,9 +11,10 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
 
 	// Apenas os pedidos pendentes ordenados pelo moment
 	@Query("SELECT DISTINCT obj "
-		  +"FROM Order obj JOIN FETCH obj.products "
-		  +"WHERE obj.status = 0 "
-		  +"ORDER BY obj.moment ASC")
+		  +"  FROM Order obj JOIN FETCH obj.products "
+		  +" WHERE obj.status = 0 "
+		  +" ORDER BY obj.moment ASC")
+
 	List<Order> findOrdersWithProducts();
-	
+
 }
